@@ -64,7 +64,7 @@
 #define YYPULL 1
 
 /* "%code top" blocks.  */
-#line 1 "calculator.y"
+#line 1 "numerator.y"
 
   #include <stdio.h> 
   #include <math.h>   
@@ -76,7 +76,7 @@
   void yyset_in (FILE *);
 
 
-#line 80 "calculator.tab.c"
+#line 80 "numerator.tab.c"
 
 
 
@@ -102,7 +102,7 @@
 #  endif
 # endif
 
-#include "calculator.tab.h"
+#include "numerator.tab.h"
 /* Symbol kind.  */
 enum yysymbol_kind_t
 {
@@ -1215,34 +1215,34 @@ yyreduce:
   switch (yyn)
     {
   case 5: /* line: exp '\n'  */
-#line 35 "calculator.y"
+#line 35 "numerator.y"
              { printf ("\033[1;35m%.10g\n\033[0m", yyvsp[-1]->value); print_syntax_tree(yyvsp[-1]);}
-#line 1221 "calculator.tab.c"
+#line 1221 "numerator.tab.c"
     break;
 
   case 7: /* line: error '\n'  */
-#line 37 "calculator.y"
+#line 37 "numerator.y"
              { yyerrok;                }
-#line 1227 "calculator.tab.c"
+#line 1227 "numerator.tab.c"
     break;
 
   case 8: /* statement: VAR '=' exp  */
-#line 41 "calculator.y"
+#line 41 "numerator.y"
               { add_variable(yyvsp[-2]->name, yyvsp[0]->value);    }
-#line 1233 "calculator.tab.c"
+#line 1233 "numerator.tab.c"
     break;
 
   case 9: /* exp: NUM  */
-#line 44 "calculator.y"
+#line 44 "numerator.y"
       {
     yyval = create_node_value("num", yyvsp[0]->value);
     add_sub_node(yyval, yyvsp[0]);
   }
-#line 1242 "calculator.tab.c"
+#line 1242 "numerator.tab.c"
     break;
 
   case 10: /* exp: VAR  */
-#line 49 "calculator.y"
+#line 49 "numerator.y"
 {
   variable_node* var = get_variable(yyvsp[0]->name);
   if(var == NULL) {
@@ -1253,11 +1253,11 @@ yyreduce:
   add_sub_node(yyval, yyvsp[0]);
   yyval->value = var->value;
 }
-#line 1257 "calculator.tab.c"
+#line 1257 "numerator.tab.c"
     break;
 
   case 11: /* exp: UNARY_FUNC '(' exp ')'  */
-#line 60 "calculator.y"
+#line 60 "numerator.y"
 {
   yyval = create_node_list_3("exp", yyvsp[-3], yyvsp[-2], yyvsp[-1]);
   add_sub_node(yyval, yyvsp[0]);
@@ -1265,59 +1265,59 @@ yyreduce:
     YYERROR;
   } 
 }
-#line 1269 "calculator.tab.c"
+#line 1269 "numerator.tab.c"
     break;
 
   case 12: /* exp: exp '+' exp  */
-#line 67 "calculator.y"
+#line 67 "numerator.y"
                      { yyval = create_node_list_3("exp", yyvsp[-2], yyvsp[-1], yyvsp[0]); yyval->value = yyvsp[-2]->value + yyvsp[0]->value;}
-#line 1275 "calculator.tab.c"
+#line 1275 "numerator.tab.c"
     break;
 
   case 13: /* exp: exp '-' exp  */
-#line 68 "calculator.y"
+#line 68 "numerator.y"
                      { yyval = create_node_list_3("exp", yyvsp[-2], yyvsp[-1], yyvsp[0]); yyval->value = yyvsp[-2]->value - yyvsp[0]->value;}
-#line 1281 "calculator.tab.c"
+#line 1281 "numerator.tab.c"
     break;
 
   case 14: /* exp: exp '*' exp  */
-#line 69 "calculator.y"
+#line 69 "numerator.y"
                      { yyval = create_node_list_3("exp", yyvsp[-2], yyvsp[-1], yyvsp[0]); yyval->value = yyvsp[-2]->value * yyvsp[0]->value;}
-#line 1287 "calculator.tab.c"
+#line 1287 "numerator.tab.c"
     break;
 
   case 15: /* exp: exp '/' exp  */
-#line 70 "calculator.y"
+#line 70 "numerator.y"
                      { yyval = create_node_list_3("exp", yyvsp[-2], yyvsp[-1], yyvsp[0]); yyval->value = yyvsp[-2]->value / yyvsp[0]->value;}
-#line 1293 "calculator.tab.c"
+#line 1293 "numerator.tab.c"
     break;
 
   case 16: /* exp: exp '%' exp  */
-#line 71 "calculator.y"
+#line 71 "numerator.y"
                      { yyval = create_node_list_3("exp", yyvsp[-2], yyvsp[-1], yyvsp[0]); yyval->value = (int)yyvsp[-2]->value % (int)yyvsp[0]->value;}
-#line 1299 "calculator.tab.c"
+#line 1299 "numerator.tab.c"
     break;
 
   case 17: /* exp: '-' exp  */
-#line 72 "calculator.y"
+#line 72 "numerator.y"
                      { yyval = create_node_list_2("exp", yyvsp[-1], yyvsp[0]); yyval->value = -yyvsp[0]->value;}
-#line 1305 "calculator.tab.c"
+#line 1305 "numerator.tab.c"
     break;
 
   case 18: /* exp: exp '^' exp  */
-#line 73 "calculator.y"
+#line 73 "numerator.y"
                      { yyval = create_node_list_3("exp", yyvsp[-2], yyvsp[-1], yyvsp[0]); yyval->value = pow (yyvsp[-2]->value, yyvsp[0]->value);}
-#line 1311 "calculator.tab.c"
+#line 1311 "numerator.tab.c"
     break;
 
   case 19: /* exp: '(' exp ')'  */
-#line 74 "calculator.y"
+#line 74 "numerator.y"
                      { yyval = create_node_list_3("exp", yyvsp[-2], yyvsp[-1], yyvsp[0]); yyval->value = yyvsp[-1]->value;}
-#line 1317 "calculator.tab.c"
+#line 1317 "numerator.tab.c"
     break;
 
 
-#line 1321 "calculator.tab.c"
+#line 1321 "numerator.tab.c"
 
       default: break;
     }
@@ -1515,7 +1515,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 77 "calculator.y"
+#line 77 "numerator.y"
 
 
 /* Called by yyparse on error. */

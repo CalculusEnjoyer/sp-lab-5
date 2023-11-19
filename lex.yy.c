@@ -454,9 +454,9 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "calculator.l"
-#line 2 "calculator.l"
-    #include "calculator.tab.h"
+#line 1 "numerator.l"
+#line 2 "numerator.l"
+    #include "numerator.tab.h"
     #include "string.h"
     #include "tree.h"
     int yyerror (const char *);
@@ -683,7 +683,7 @@ YY_DECL
 		}
 
 	{
-#line 13 "calculator.l"
+#line 13 "numerator.l"
 
 #line 688 "lex.yy.c"
 
@@ -744,7 +744,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 14 "calculator.l"
+#line 14 "numerator.l"
 {
     ACTION_BEFORE
     yylval->value = atoi(yytext);
@@ -753,7 +753,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 20 "calculator.l"
+#line 20 "numerator.l"
 {
     ACTION_BEFORE
     yylval->value = atof(yytext);
@@ -762,7 +762,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 26 "calculator.l"
+#line 26 "numerator.l"
 {
     ACTION_BEFORE
     return UNARY_FUNC;
@@ -770,7 +770,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 31 "calculator.l"
+#line 31 "numerator.l"
 {
     ACTION_BEFORE
     return VAR;
@@ -779,27 +779,27 @@ YY_RULE_SETUP
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 36 "calculator.l"
+#line 36 "numerator.l"
 { ACTION_BEFORE; return *yytext; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 37 "calculator.l"
+#line 37 "numerator.l"
 { ACTION_BEFORE; return *yytext; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 39 "calculator.l"
+#line 39 "numerator.l"
 ;
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 41 "calculator.l"
+#line 41 "numerator.l"
 yyerror("invalid character");
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 42 "calculator.l"
+#line 42 "numerator.l"
 ECHO;
 	YY_BREAK
 #line 805 "lex.yy.c"
@@ -1807,7 +1807,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 42 "calculator.l"
+#line 42 "numerator.l"
 
 
 int yywrap(void) {

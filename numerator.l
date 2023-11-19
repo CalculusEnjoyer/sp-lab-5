@@ -1,5 +1,5 @@
 %{
-    #include "calculator.tab.h"
+    #include "numerator.tab.h"
     #include "string.h"
     #include "tree.h"
     int yyerror (const char *);
