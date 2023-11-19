@@ -68,8 +68,8 @@
 
   #include <stdio.h> 
   #include <math.h>   
-  #include "utils.h" 
-  #include "syntax_tree.h"
+  #include "helpers.h"
+  #include "tree.h"
 
   int yylex (void);
   void yyerror (char const *);

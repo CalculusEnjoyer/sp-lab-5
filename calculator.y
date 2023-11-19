@@ -1,8 +1,8 @@
 %code top{
   #include <stdio.h> 
   #include <math.h>   
-  #include "utils.h" 
-  #include "syntax_tree.h"
+  #include "helpers.h"
+  #include "tree.h"
 
   int yylex (void);
   void yyerror (char const *);
@@ -11,7 +11,7 @@
 }
 
 %locations
-%define api.value.type { struct syntax_node* }
+%define api.value.type { struct node* }
 %token NUM     /* Double precision number. */
 %token VAR UNARY_FUNC
 %nterm exp

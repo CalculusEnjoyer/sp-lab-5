@@ -3,3 +3,9 @@ b = 3
 a + b
 
 log (a+b)
+
+cos ( log ( a + b ) )
+
+a = 24
+
+a * 2

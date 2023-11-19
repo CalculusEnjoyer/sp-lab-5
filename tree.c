@@ -1,10 +1,10 @@
-#include "syntax_tree.h"
+#include "tree.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
-syntax_node* create_node(const char* name) {
-    syntax_node* new_node = malloc(sizeof(syntax_node));
+node* create_node(const char* name) {
+    node* new_node = malloc(sizeof(node));
     for(int i = 0; i < NODES_SIZE; i++) {
         new_node->next_elements[i] = NULL;
     }
@@ -14,13 +14,13 @@ syntax_node* create_node(const char* name) {
     return new_node;
 }
 
-syntax_node* create_node_value(const char* name, double value) {
-    syntax_node* new_node = create_node(name);
+node* create_node_value(const char* name, double value) {
+    node* new_node = create_node(name);
     new_node->value = value;
     return new_node;
 }
 
-void add_sub_node(syntax_node* main_node, syntax_node* sub_node)
+void add_sub_node(node* main_node, node* sub_node)
 {
     int i = 0;
     while (main_node->next_elements[i] != NULL)
@@ -31,9 +31,9 @@ void add_sub_node(syntax_node* main_node, syntax_node* sub_node)
     main_node->next_elements[i] = sub_node;
 }
 
-syntax_node* create_node_list_3(const char* name, syntax_node* one, syntax_node* two, syntax_node* three) 
+node* create_node_list_3(const char* name, node* one, node* two, node* three)
 {
-    syntax_node* new_node = create_node(name);
+    node* new_node = create_node(name);
     add_sub_node(new_node, one);
     add_sub_node(new_node, two);
     add_sub_node(new_node, three);
@@ -41,9 +41,9 @@ syntax_node* create_node_list_3(const char* name, syntax_node* one, syntax_node*
     return new_node;
 }
 
-syntax_node* create_node_list_2(const char* name, syntax_node* one, syntax_node* two) 
+node* create_node_list_2(const char* name, node* one, node* two)
 {
-    syntax_node* new_node = create_node(name);
+    node* new_node = create_node(name);
     add_sub_node(new_node, one);
     add_sub_node(new_node, two);
 
@@ -51,7 +51,7 @@ syntax_node* create_node_list_2(const char* name, syntax_node* one, syntax_node*
 }
 
 
-void print_tree(syntax_node* node, char* ind, int is_last) 
+void print_tree(node* node, char* ind, int is_last)
 {
     char *indent = strdup(ind);
     int c = 0;
@@ -84,7 +84,7 @@ void print_spaces(int count) {
 }
 
 
-void print_syntax_tree_rec(syntax_node* node, int depth, int isLast) {
+void print_syntax_tree_rec(node* node, int depth, int isLast) {
     printf("\033[0;36m");
     if (node != NULL) {
         print_spaces(depth - 1);
@@ -114,7 +114,7 @@ void print_syntax_tree_rec(syntax_node* node, int depth, int isLast) {
     }
 }
 
-void print_syntax_tree(syntax_node* node) {
+void print_syntax_tree(node* node) {
     printf("\033[0;33m");
     printf("Syntax Tree:\n");
     print_syntax_tree_rec(node, 0, 1);

@@ -1,7 +1,7 @@
 %{
     #include "calculator.tab.h"
     #include "string.h"
-    #include "syntax_tree.h"
+    #include "tree.h"
     int yyerror (const char *);
 
     size_t offset;
